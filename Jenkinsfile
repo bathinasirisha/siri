@@ -13,7 +13,8 @@ pipeline
            stage('clone')
                {
                 steps {
-                      sh 'ssh sirisha@35.225.232.132 git clone https://github.com/bathinasirisha/siri.git'
+                      sh 'ssh sirisha@35.225.232.132 git clone https://github.com/bathinasirisha/siri.git
+                      sh 'ssh sirisha@35.225.232.132 cp siri/* ./
                       sh 'ssh sirisha@35.225.232.132 ls -la'
                       }
                }
