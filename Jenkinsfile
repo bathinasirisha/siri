@@ -20,7 +20,7 @@ pipeline
             stage('to create docker image') {
                   steps {
                         sh 'ssh sirisha@35.225.232.132 docker build -t apache_image .'
-                        sh 'ssh sirisha@35.225.232.132 docker images
+                        sh 'ssh sirisha@35.225.232.132 docker images'
                         }
                }
             stage('to create container') {
