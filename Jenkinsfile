@@ -8,28 +8,25 @@ pipeline {
       }
     }
     
-    stage('Build') {
+    stage('clone') {
       steps {
         sh 'ssh sirisha@35.225.178.77 git clone https://github.com/bathinasirisha/siri.git'
          sh 'ssh sirisha@35.225.178.77 ls -la'
       }
     }
-    stage('Test') {
+    stage('application deploy to nginx') {
       steps {
-        parallel(
-          "Test": {
-            echo 'Testing..'
-          },
-          "Integration Test": {
-            echo 'Integration Test...'
-            
-          }
+       
+         
+            sh 'ssh sirisha@35.225.178.77 mv siri/index.html /usr/share/nginx/html/'
+          
+          
         )
       }
     }
-    stage('Deploy') {
+    stage('restart service') {
       steps {
-        echo 'Deploying....'
+         sh 'ssh sirisha@35.225.178.77 sudo systemctl restart nginx'
       }
     }
   }
