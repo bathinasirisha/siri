@@ -5,26 +5,26 @@ pipeline
           stage('delete old repo') 
                {
                  steps {
-                        sh 'ssh sirisha@35.225.178.77 rm -rf siri'
-                        sh 'ssh sirisha@35.225.178.77 ls -la'
+                        sh 'ssh sirisha@34.28.163.80 rm -rf siri'
+                        sh 'ssh sirisha@34.28.163.80 ls -la'
                         }
                }
     
            stage('clone')
                {
                 steps {
-                      sh 'ssh sirisha@35.225.178.77 git clone https://github.com/bathinasirisha/siri.git'
-                      sh 'ssh sirisha@35.225.178.77 ls -la'
+                      sh 'ssh sirisha@34.28.163.80 git clone https://github.com/bathinasirisha/siri.git'
+                      sh 'ssh sirisha@34.28.163.80 ls -la'
                       }
                }
             stage('application deploy to nginx') {
                   steps {
-                        sh 'ssh sirisha@35.225.178.77 mv siri/index.html /usr/share/nginx/html/'
+                        sh 'ssh sirisha@34.28.163.80 mv siri/index.html /usr/share/nginx/html/'
                         }
                }
             stage('restart service') {
                   steps {
-                        sh 'ssh sirisha@35.225.178.77 sudo systemctl restart nginx'
+                        sh 'ssh sirisha@34.28.163.80 sudo systemctl restart nginx'
                }
            }
   }
