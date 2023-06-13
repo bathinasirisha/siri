@@ -1,6 +1,13 @@
 pipeline {
   agent any
   stages {
+    stage('delete old repo') {
+      steps {
+        sh 'ssh sirisha@35.225.178.77 rm -rf siri'
+         sh 'ssh sirisha@35.225.178.77 ls -la'
+      }
+    }
+    
     stage('Build') {
       steps {
         sh 'ssh sirisha@35.225.178.77 git clone https://github.com/bathinasirisha/siri.git'
