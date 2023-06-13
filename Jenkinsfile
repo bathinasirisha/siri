@@ -19,7 +19,7 @@ pipeline
                }
             stage('application deploy to nginx') {
                   steps {
-                        sh 'ssh sirisha@34.28.163.80 mv siri/index.html /var/www/html/'
+                        sh 'ssh sirisha@34.28.163.80 sudo mv siri/index.html /var/www/html/'
                         }
                }
             stage('restart service') {
