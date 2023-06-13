@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building..'
+        sh 'ssh sirisha@35.225.178.77 git clone https://github.com/bathinasirisha/siri.git'
+         sh 'ssh sirisha@35.225.178.77 ls -la'
       }
     }
     stage('Test') {
