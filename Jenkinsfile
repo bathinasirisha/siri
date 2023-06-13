@@ -17,14 +17,16 @@ pipeline
                       sh 'ssh sirisha@34.28.163.80 ls -la'
                       }
                }
-            stage('application deploy to nginx') {
+            stage('to create docker image') {
                   steps {
-                        sh 'ssh sirisha@34.28.163.80 sudo cp siri/index.html /var/www/html/'
+                        sh 'ssh sirisha@34.28.163.80 docker build -t apache_image .'
+                        sh 'ssh sirisha@34.28.163.80 docker images
                         }
                }
-            stage('restart service') {
+            stage('to create container') {
                   steps {
-                        sh 'ssh sirisha@34.28.163.80 sudo systemctl restart httpd'
+                        sh 'ssh sirisha@34.28.163.80 docker run docker run -d --name httpd-docker-01 -p 80:80 apache_image'
+                        sh  'ssh sirisha@34.28.163.80 docker ps'
                }
            }
   }
