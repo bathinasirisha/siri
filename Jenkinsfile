@@ -20,14 +20,14 @@ pipeline
                }
             stage('to create docker image') {
                   steps {
-                        sh 'ssh sirisha@35.225.232.132 docker build -t apache_image .'
-                        sh 'ssh sirisha@35.225.232.132 docker images'
+                        sh 'ssh sirisha@35.225.232.132 sudo docker build -t apache_image .'
+                        sh 'ssh sirisha@35.225.232.132 sudo docker images'
                         }
                }
             stage('to create container') {
                   steps {
-                        sh 'ssh sirisha@35.225.232.132 docker run docker run -d --name httpd-docker-01 -p 80:80 apache_image'
-                        sh  'ssh sirisha@35.225.232.132 docker ps'
+                        sh 'ssh sirisha@35.225.232.132 sudo docker run docker run -d --name httpd-docker-01 -p 80:80 apache_image'
+                        sh  'ssh sirisha@35.225.232.132 sudo docker ps'
                }
            }
   }
