@@ -1,33 +1,31 @@
-pipeline {
+pipeline 
+{
   agent any
   stages {
-    stage('delete old repo') {
-      steps {
-        sh 'ssh sirisha@35.225.178.77 rm -rf siri'
-         sh 'ssh sirisha@35.225.178.77 ls -la'
-      }
-    }
+          stage('delete old repo') 
+               {
+                 steps {
+                        sh 'ssh sirisha@35.225.178.77 rm -rf siri'
+                        sh 'ssh sirisha@35.225.178.77 ls -la'
+                        }
+               }
     
-    stage('clone') {
-      steps {
-        sh 'ssh sirisha@35.225.178.77 git clone https://github.com/bathinasirisha/siri.git'
-         sh 'ssh sirisha@35.225.178.77 ls -la'
-      }
-    }
-    stage('application deploy to nginx') {
-      steps {
-       
-         
-            sh 'ssh sirisha@35.225.178.77 mv siri/index.html /usr/share/nginx/html/'
-          
-          
-        )
-      }
-    }
-    stage('restart service') {
-      steps {
-         sh 'ssh sirisha@35.225.178.77 sudo systemctl restart nginx'
-      }
-    }
+           stage('clone')
+               {
+                steps {
+                      sh 'ssh sirisha@35.225.178.77 git clone https://github.com/bathinasirisha/siri.git'
+                      sh 'ssh sirisha@35.225.178.77 ls -la'
+                      }
+               }
+            stage('application deploy to nginx') {
+                  steps {
+                        sh 'ssh sirisha@35.225.178.77 mv siri/index.html /usr/share/nginx/html/'
+                        }
+               }
+            stage('restart service') {
+                  steps {
+                        sh 'ssh sirisha@35.225.178.77 sudo systemctl restart nginx'
+               }
+           }
   }
 }
