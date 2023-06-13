@@ -26,7 +26,7 @@ pipeline
                }
             stage('to create container') {
                   steps {
-                        sh 'ssh sirisha@35.225.232.132 sudo docker run docker run -d --name httpd-docker-01 -p 53:80 apache_image:latest'
+                        sh 'ssh sirisha@35.225.232.132 sudo docker run docker run -d --name httpd-docker-01 -p 88:80 apache_image:latest'
                         sh  'ssh sirisha@35.225.232.132 sudo docker ps'
                }
            }
